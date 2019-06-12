@@ -135,24 +135,27 @@ WHERE Sage<ANY(SELECT Sage
                FROM Student 
                WHERE Sdept='CS')
 AND Sdept<>'CS';
------------------------
-
-
 ---------------------------------------
 UPDATE Student
 SET Sage=Sage+1;
 --------------------------------------
-CREATE VIEW IS_Student
-AS
-SELECT Sno,Sname,Sage
-FROM Student
-WHERE Sdept='IS'
-WITH CHECK OPTION;
------------------------------------------
-CREATE VIEW BT_S(Sno,Sname,Sbirth)
-AS
-SELECT Sno,Sname,2014-Sage
-FROM Student
+USE stdtb
+ GO
+ CREATE VIEW IS_Student
+        AS 
+        SELECT Sno,Sname,Sage
+        FROM Student
+        WHERE Sdept='IS'
+        WITH CHECK OPTION
+        GO
+        
+ CREATE VIEW BT_S(Sno,Sname,Sbirth)
+        AS 
+        SELECT Sno,Sname,Sage
+        FROM Student
+        GO
+
+
 -----------------------------------------
 
 create login zhengxiaoxiao with password='zhengxiaoxiao', default_database=stdtb
